@@ -1,0 +1,352 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,100..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+:root {
+    /* Colors */
+
+    /* Background */
+    --bg-primary: #080808;
+    --bg-secondary: #EDE7DC;
+    --bg-muted: #7a7870;
+
+    /* Text */
+    --text-primary: #f0ede8;
+    --text-secondary: #c8ff00;
+    --font-size: 16px;
+    
+    /* Others */
+    --ring: #c8ff00;
+    --card-primary: #111111;
+
+    --muted: #1e1e1e;
+
+    --card-bg: #0F0F0F;
+    --card-text: #FFFFFF;
+
+    /* Typography */
+    --font-heading: "Big Shoulders", sans-serif;
+    --font-body: "DM Sans", sans-serif;
+    --font-code: "JetBrains Mono", monospace;
+
+    /* Spacing */
+    --radius: 0.25rem;
+    --container-width: 1200px;
+
+    /* Border */
+    --border: rgba(240,237,232, 0.10);
+    --container-width: 1400px;
+
+    /* buttons */
+
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body{
+    background-color: #080808;
+    color: var(--text-primary);
+}
+
+#container{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 24px;
+    font-weight: 800;
+    gap: 5rem;
+    font-size: clamp(0.9rem, 1vw, 1.1rem);
+}
+
+.nav{
+    font-weight: 600;
+    font-family: var(--font-heading);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid transparent;
+}
+
+.nav-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    
+
+    width: 100%;
+    height: 1px;
+
+    background: transparent;
+    transition: background-color 0.3s ease;
+}
+
+.nav.scrolled {
+    border-bottom-color: var(--border);
+    
+}
+
+.nav-wrapper .nav.scrolled{
+  padding-bottom: 16px;
+}
+
+.nav.scroll-flash {
+    animation: border-flash 0.8s ease;
+}
+
+@keyframes border-flash {
+    0% {
+        border-bottom-color: transparent;
+    }
+
+    20% {
+        border-bottom-color:azure;
+    }
+
+    100% {
+        border-bottom-color: var(--border);
+    }
+}
+
+.nav.scrolled::after {
+    background: var(--border);
+}
+
+.nav.flash::after {
+    animation: flash-border 0.6s ease forwards;
+}
+
+@keyframes flash-border {
+    0% {
+        background: transparent;
+    }
+
+    50% {
+        background: azure;
+        box-shadow: 0 0 10px azure;
+    }
+
+    100% {
+        background: var(--border);
+        box-shadow: none;
+    }
+}
+
+.initials{
+    /* letter-spacing: -1px; */
+    transform: scaleY(1.15);
+    font-size: 1.3rem;
+}
+.text-dot{
+    color: #c8ff00;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-buttons button{
+  background: transparent;
+  border: none;
+  color: var(--bg-muted);
+  font-family: var(--font-code);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  gap: 0.5rem;
+}
+
+.nav-buttons button:hover{
+  color: var(--text-secondary);
+}
+
+.hire {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-weight: 400;
+  font-size: 0.96rem;
+  /* font-family: var(--font-body); */
+  color: var(--text-secondary);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 8px 16px;
+
+    border: none;
+    outline: none;
+
+    cursor: pointer;
+
+    font-family: var(--font-code);
+    font-size: 0.8rem;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+        transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow 0.25s ease,
+        background-color 0.25s ease,
+        color 0.25s ease;
+}
+
+/* Primary CTA */
+
+.btn-primary {
+    background: var(--text-secondary);
+    color: var(--bg-primary);
+}
+
+.btn-primary:hover {
+    background: azure;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 0 20px rgba(200,255,0,0.25);
+}
+
+/* Secondary Button */
+
+.btn-secondary {
+    background: transparent;
+
+    color: var(--text-primary);
+
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+    border-color: var(--text-secondary);
+    color: var(--text-secondary);
+
+    transform: translateY(-3px);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--bg-muted);
+}
+
+.btn-ghost:hover {
+    color: var(--text-secondary);
+}
+
+.live-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--text-secondary); /* Red live color */
+  border-radius: 50%;
+  margin-right: 8px;
+  display: inline-block;
+  animation: live-pulse 1.5s infinite ease-in-out; 
+}
+
+@keyframes live-pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 var(--text-secondary);
+  }
+  
+  70% {
+    transform: scale(1);
+    /* Creates the expanding fading ripple ring */
+    box-shadow: 0 0 0 10px rgba(255, 0, 0, 0); 
+  }
+  
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
+  }
+}
+
+.hero{
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  font-family: var(--font-heading);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 4rem;
+}
+
+.hero-h6{
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  line-height: 0.5;
+}
+
+.hero h1{
+  font-size: clamp(4rem, 11vw,14rem);
+  letter-spacing: -2px;
+  line-height: 0.9;
+}
+
+.last-name{
+  display: block;
+  color: var(--text-secondary);
+  /* margin-left: 212px;
+  margin-right: 0; */
+}
+
+/* .hero h1 .hero-para{
+  margin-top: 24px ;
+  font-size: medium;
+  color: var(--bg-muted);
+  letter-spacing: 0;
+  line-height: 1.2;
+} */
+
+.hero h1 .hero-dot{
+  margin-left: 0;
+  display: inline;
+  color: var(--text-primary);
+}
+
+.hero-section{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 4rem;
+}
+
+.hero-image{
+    width: 450px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 16px;
+}
+
+
+
+
